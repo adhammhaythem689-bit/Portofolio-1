@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adham El-Messiry | Mechatronics Portfolio</title>
+    <title>Adham Elmessiry | Mechatronics Portfolio</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -44,6 +44,7 @@
             margin-bottom: 1.5rem;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            overflow: hidden;
         }
         .project-card h3 {
             margin-top: 0;
@@ -55,14 +56,31 @@
             font-weight: bold;
             margin-bottom: 1rem;
         }
+        
+        /* Updated Image Styles for Uniformity */
         .portfolio-img {
             width: 100%;
-            max-width: 400px;
+            height: 200px; /* Forces all images to the same height */
+            object-fit: cover; /* Crops the image smartly so it doesn't stretch */
             border-radius: 8px;
             border: 1px solid #ccc;
             margin-bottom: 1rem;
             display: block;
+            cursor: pointer; /* Changes mouse to a pointer to show it's clickable */
+            transition: transform 0.2s ease-in-out;
         }
+        .portfolio-img:hover {
+            transform: scale(1.02); /* Slight hover effect */
+        }
+        
+        /* Ensure videos don't get cropped weirdly */
+        video.portfolio-img {
+            height: auto;
+            max-height: 200px;
+            object-fit: contain;
+            cursor: default;
+        }
+
         .btn {
             display: inline-block;
             background: #2980b9;
@@ -91,12 +109,48 @@
             text-decoration: underline;
             color: #3498db;
         }
+        .skills-section p {
+            margin: 0.5rem 0;
+        }
+        .gallery {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        .gallery img {
+            margin-bottom: 0;
+            flex: 1;
+            min-width: 150px;
+        }
+
+        /* Lightbox (Fullscreen Image Viewer) Styles */
+        .lightbox {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+        }
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90vh;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            object-fit: contain;
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Adham El-Messiry</h1>
+        <h1>Adham Elmessiry</h1>
         <p>Mechatronics Engineering | Robotics & Automation | Dubai, UAE</p>
         <a href="Adham_Elmessiry_CV_PDF.pdf" class="btn" download>Download My CV</a>
     </header>
@@ -106,10 +160,20 @@
         <h2>About Me</h2>
         <p>I am a Mechatronics Engineering student experienced in robotics, embedded systems, automation, and automotive diagnostics. I enjoy integrating software like Python and C++ with physical hardware through sensors, control logic, and system-level troubleshooting.</p>
 
-        <h2>Experience</h2>
+        <h2>Technical Skills</h2>
+        <div class="project-card skills-section">
+            <p><strong>Programming:</strong> Python, C/C++, MATLAB, Arduino Programming, Structured Text (PLC)</p>
+            <p><strong>AI & Computer Vision:</strong> Machine Learning, Generative AI, YOLO Object Detection, OpenCV, Image Processing, Mistral AI</p>
+            <p><strong>Embedded Systems & Electronics:</strong> Arduino, Raspberry Pi, Arduino UNO Q, Ultrasonic/LDR Sensors, CAN Bus, ECU Diagnostics</p>
+            <p><strong>Control Systems & Automation:</strong> PI Control, Feedback Control, PLC Logic, Pneumatics, Hydraulics, Process Control</p>
+            <p><strong>Engineering & Mechanical:</strong> AutoCAD, MATLAB Simulink, Connected Components Workbench (CCW), BMW ISTA, 3D CAD, Stress/Fatigue Analysis</p>
+        </div>
+
+        <h2>Experience & Workshops</h2>
+        
         <div class="project-card">
             <h3>AGMC BMW Engineering Intern</h3>
-            <p class="tech-tags">Diagnostic Tools: BMW ISTA, CAN bus </p>
+            <p class="tech-tags">Diagnostic Tools: BMW ISTA, CAN bus</p>
             <ul>
                 <li>Performed advanced diagnostics using BMW ISTA, including ECU fault tracing and CAN bus analysis.</li>
                 <li>Assisted senior technicians with mechanical and electrical system repairs and recalibration.</li>
@@ -117,40 +181,188 @@
             <a href="Adham El-Messiry -AGMC Internship letter.pdf" target="_blank" class="cert-link">View Internship Letter</a>
         </div>
 
-        <h2>Core Projects</h2>
-
         <div class="project-card">
-            <h3>Rosa On-Prem AI Deployment</h3>
-            <p class="tech-tags">Ubuntu | Docker | NVIDIA DGX | vLLM | Open-WebUI</p>
+            <h3>Founder | Maktoub Clothing Brand</h3>
+            <p class="tech-tags">Entrepreneurship | Brand Strategy | Digital Marketing</p>
+            
+            <div class="gallery">
+                <img src="Maktoub (1).jpeg" alt="Maktoub 1" class="portfolio-img">
+                <img src="Maktoub (2).jpeg" alt="Maktoub 2" class="portfolio-img">
+                <img src="Maktoub (3).jpeg" alt="Maktoub 3" class="portfolio-img">
+            </div>
+
             <ul>
-                <li>Managed containerized deployments of vLLM models, Qdrant vector database instances, and Open-WebUI services on an NVIDIA DGX machine.</li>
-                <li>Executed system software updates and container maintenance for AI deployment services, including the rosa-onprem package.</li>
+                <li>Founded and developed an independent clothing brand, managing product design, branding strategy, marketing, and digital presence.</li>
+                <li>Applied entrepreneurship principles including customer analysis, brand identity development, and social media marketing.</li>
             </ul>
         </div>
 
         <div class="project-card">
-            <h3>Interactive Mobile App Prototype</h3>
+            <h3>Arduino UNO Q Robocar Workshop (Besomi Academy)</h3>
+            <p class="tech-tags">Arduino UNO Q | C++ | Robotics</p>
+            
+            <video class="portfolio-img" controls muted loop playsinline>
+                <source src="Robocar.mp4.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            
+            <ul>
+                <li>Built a robotic car from scratch utilizing Arduino UNO Q microcontrollers.</li>
+                <li>Wrote and implemented custom C++ code to control individual car movements and behaviors.</li>
+            </ul>
+        </div>
+
+        <h2>Competitions</h2>
+        <div class="project-card">
+            <h3>Roads and Transport Authority (RTA) Innovation Competition 2026</h3>
+            <p class="tech-tags">AI | Mistral AI | Intelligent Transportation Systems</p>
+            <ul>
+                <li>Collaborated in a multidisciplinary team to solve a real-world transportation challenge during a one-week innovation competition.</li>
+                <li>Contributed to the Business Plan, Marketing Strategy, Responsible AI framework, and Data Management strategy presented to RTA judges.</li>
+            </ul>
+        </div>
+
+        <h2>Core Projects</h2>
+
+        <div class="project-card">
+            <h3>RTA AI Intelligent Traffic Management Solution</h3>
+            <p class="tech-tags">Computer Vision | Mistral AI | Central Fusion System</p>
+            
+            <div class="gallery">
+                <img src="RTA Presentation1.jpeg" alt="RTA Presentation 1" class="portfolio-img">
+                <img src="RTA Presentation2.jpeg" alt="RTA Presentation 2" class="portfolio-img">
+                <img src="RTA Presentation3.jpeg" alt="RTA Presentation 3" class="portfolio-img">
+            </div>
+            
+            <ul>
+                <li>Designed an AI-powered traffic management proof-of-concept featuring a central fusion system to reduce congestion.</li>
+                <li>Engineered AI camera detection frameworks to identify vehicles on the road (such as ambulances) to dynamically prioritize emergency response routing.</li>
+                <li>Presented a live prototype demonstrating adaptive traffic signal optimization using AI technologies.</li>
+            </ul>
+            <a href="https://github.com/Adham-Elmessiry/RTATrafficOperations/releases" target="_blank" class="btn">View v1.0.0 Release</a>
+        </div>
+
+        <div class="project-card">
+            <h3>RTA Live AI Dashboard</h3>
+            <p class="tech-tags">Web Interface | Real-Time Analytics | Traffic Monitoring</p>
+            
+            <img src="RTA AI Dahboard (1).png" alt="RTA Dashboard 1" class="portfolio-img">
+            <img src="RTA AI Dahboard (2).png" alt="RTA Dashboard 2" class="portfolio-img">
+            <img src="RTA AI Dahboard (3).png" alt="RTA Dashboard 3" class="portfolio-img">
+            
+            <ul>
+                <li>Developed a dedicated web dashboard to visualize real-time traffic data and monitor system analytics.</li>
+                <li>Integrated live status tracking to display active intersection states and emergency vehicle routing.</li>
+            </ul>
+        </div>
+
+        <div class="project-card">
+            <h3>AI Object Detection System</h3>
+            <p class="tech-tags">YOLO Framework | Python | Custom Dataset</p>
+            
+            <div class="gallery">
+                <img src="Object Detection (1).png" alt="Object Detection 1" class="portfolio-img">
+                <img src="Object Detection (2).png" alt="Object Detection 2" class="portfolio-img">
+                <img src="Object Detection (3).png" alt="Object Detection 3" class="portfolio-img">
+            </div>
+
+            <ul>
+                <li>Developed and trained a custom YOLO-based object detection model to identify office hardware (desktop PCs, printers, smart boards) using an 800-image labeled dataset over 50 epochs.</li>
+                <li>Engineered a web-based interface to visualize detection results and seamlessly test model accuracy.</li>
+            </ul>
+            <a href="https://github.com/Adham-Elmessiry/Object-Detection/releases" target="_blank" class="btn">View v1.0.0 Release</a>
+        </div>
+
+        <div class="project-card">
+            <h3>Vunch: Interactive Mobile App Prototype</h3>
             <p class="tech-tags">UI/UX Design | Software Development | VS Code</p>
             <img src="Feed.png" alt="Mobile App Video Feed" class="portfolio-img" style="max-width: 300px;">
             <ul>
-                <li>Designed and built a mobile application prototype featuring a continuous, TikTok-style video feed interface.</li>
-                <li>Engineered user-specific data handling, including a functioning "saved videos" section.</li>
-                <li>Integrated secure Google and Apple login authentication systems.</li>
+                <li>Designed and built a mobile application featuring a continuous, TikTok-style video feed interface, complete with a hamburger navigation menu.</li>
+                <li>Engineered user-specific data handling, including a functional "saved videos" section featuring a dynamic red heart toggle and a custom empty state interface.</li>
             </ul>
+            <a href="https://github.com/Adham-Elmessiry/Vunch/releases" target="_blank" class="btn">View v1.0.0 Release</a>
+        </div>
+
+        <div class="project-card">
+            <h3>AI Presentation Assistant (Work in Progress)</h3>
+            <p class="tech-tags">Generative AI | Active Development</p>
+            
+            <div class="gallery">
+                <img src="AI presentation Assistant (1).png" alt="Presentation Assistant 1" class="portfolio-img">
+                <img src="AI presentation Assistant (2).png" alt="Presentation Assistant 2" class="portfolio-img">
+                <img src="AI presentation Assistant (3).png" alt="Presentation Assistant 3" class="portfolio-img">
+            </div>
+
+            <ul>
+                <li>Currently developing an AI-powered presentation assistant designed to streamline and enhance presentation workflows.</li>
+                <li>Focusing on integrating machine learning tools to optimize presentation creation and delivery.</li>
+            </ul>
+            <a href="https://github.com/Adham-Elmessiry/AI-Presentation-Assistant-WIP-/releases" target="_blank" class="btn">View v0.1.0-alpha Release</a>
         </div>
 
         <div class="project-card">
             <h3>AI Autonomous Robocar</h3>
-            <p class="tech-tags">Raspberry Pi | Python | Ultrasonic Sensors | Camera </p>
+            <p class="tech-tags">Raspberry Pi | Python | Ultrasonic Sensors | Camera</p>
+            <img src="Robocar.jpg" alt="AI Autonomous Robocar" class="portfolio-img">
             <ul>
-                <li>Built a Raspberry Pi-based autonomous vehicle integrating camera and ultrasonic sensors.</li>
+                <li>Built a Raspberry Pi-based autonomous vehicle integrating camera vision and ultrasonic sensors.</li>
                 <li>Implemented real-time navigation and lane detection using Python.</li>
             </ul>
         </div>
 
         <div class="project-card">
+            <h3>Electro-Pneumatic & Hydraulic Control Circuits</h3>
+            <p class="tech-tags">Pneumatics | Control Logic | Industrial Automation</p>
+            
+            <div class="gallery">
+                <img src="Pneumatics1.jpeg" alt="Pneumatic Setup 1" class="portfolio-img">
+                <img src="Pneumatic2.jpeg" alt="Pneumatic Setup 2" class="portfolio-img">
+            </div>
+            
+            <ul>
+                <li>Designed a pneumatic circuit using air pressure to operate a double-acting cylinder.</li>
+                <li>Programmed controllers to manage cylinder movement and integrated a suction mechanism for automated glass handling.</li>
+            </ul>
+        </div>
+
+        <div class="project-card">
+            <h3>Intelligent Automated Package Sorting Conveyor System</h3>
+            <p class="tech-tags">MATLAB / Simulink | OpenCV | PI Control | AutoCAD</p>
+            
+            <div class="gallery">
+                <img src="Conveyor (1).png" alt="Conveyor 1" class="portfolio-img">
+                <img src="Conveyor (2).png" alt="Conveyor 2" class="portfolio-img">
+                <img src="Conveyor (3).png" alt="Conveyor 3" class="portfolio-img">
+            </div>
+
+            <ul>
+                <li>Designed a smart conveyor system that autonomously identifies and routes packages into Standard, Fragile, and Express lanes.</li>
+                <li>Implemented a PI controller for closed-loop speed regulation of a DC motor using encoder feedback.</li>
+                <li>Integrated an overhead camera running OpenCV on an edge device for package classification and automated fault detection.</li>
+            </ul>
+        </div>
+
+        <div class="project-card">
+            <h3>Water Efficient Solar Panel Cleaning Mechanism</h3>
+            <p class="tech-tags">AutoCAD 3D | Mechanical Stress & Fatigue Analysis</p>
+            
+            <video class="portfolio-img" controls muted loop playsinline>
+                <source src="solar-cleaner.mp4.mp4.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            
+            <ul>
+                <li>Designed an automated cleaning system optimized for dusty conditions, achieving a 98.1% water saving rate (&lt;0.5 L per cycle).</li>
+                <li>Modeled a motor-driven lead screw to translate a cleaning carriage with a nylon brush and five-nozzle water spray across a PV panel.</li>
+                <li>Evaluated the mechanism for Von Mises stress, Euler buckling, fatigue, and deflection limits.</li>
+            </ul>
+        </div>
+
+        <div class="project-card">
             <h3>Motorcycle Restoration & Electrical Rewiring</h3>
-            <p class="tech-tags">Multimeter | Mechanical Repair | Wiring </p>
+            <p class="tech-tags">Multimeter | Mechanical Repair | Wiring</p>
+            <img src="Motorcycle Restoration.jpeg" alt="Motorcycle Restoration" class="portfolio-img" style="max-width: 300px;">
             <ul>
                 <li>Completed a full mechanical overhaul and electrical harness reconstruction.</li>
                 <li>Diagnosed ignition, charging, and starter systems using systematic fault isolation.</li>
@@ -159,37 +371,56 @@
 
         <div class="project-card">
             <h3>Smart Street Lighting System</h3>
-            <p class="tech-tags">Raspberry Pi | LDR | Motion Sensors </p>
+            <p class="tech-tags">Raspberry Pi | LDR | Motion Sensors</p>
             <ul>
                 <li>Designed an adaptive lighting system using LDR and motion sensors to save energy.</li>
                 <li>Achieved 35% simulated energy reduction using embedded automation logic.</li>
             </ul>
         </div>
 
-        <div class="project-card">
-            <h3>Computer Vision & Automation</h3>
-            <p class="tech-tags">MATLAB | Connected Components Workbench (CCW) </p>
-            <ul>
-                <li>Executed blob detection and image processing algorithms in MATLAB.</li>
-                <li>Programmed structured text logic in CCW for temperature conversion and process control.</li>
-            </ul>
-        </div>
-
-        <h2>Certifications</h2>
+        <h2>Certifications & Professional Development</h2>
         <ul>
-            <li><a href="Robocar.jpg" target="_blank" class="cert-link">AI Robo Car Workshop (4 Hrs) - Besomi Academy </a></li>
+            <li><strong>RTA Innovation Challenge Certificate</strong> - AI, Responsible AI, Data Strategy, and Innovation</li>
+            <li><a href="Besomi Arduino UNO Q Certificate.pdf" target="_blank" class="cert-link">Arduino UNO Q Workshop - Besomi Academy</a></li>
             <li><a href="Certificate of Appreciation CUD.jpeg" target="_blank" class="cert-link">Certificate of Appreciation - Canadian University Dubai</a></li>
-            <li><a href="Introduction to IoT Cisco.pdf" target="_blank" class="cert-link">Introduction to Internet of Things - Cisco Networking Academy </a></li>
-            <li><a href="Introduction to Modern AI Cisco.pdf" target="_blank" class="cert-link">Introduction to Modern AI - Cisco Networking Academy </a></li>
-            <li><a href="Nvidia.png" target="_blank" class="cert-link">Generative AI Explained - NVIDIA </a></li>
+            <li><a href="ApplyAIAnalyzeCustomerReviews.pdf" target="_blank" class="cert-link">Apply AI: Analyze Customer Reviews - Cisco Networking Academy</a></li>
+            <li><a href="Introduction to IoT Cisco.pdf" target="_blank" class="cert-link">Introduction to Internet of Things (IoT) - Cisco Networking Academy</a></li>
+            <li><a href="Introduction to Modern AI Cisco.pdf" target="_blank" class="cert-link">Introduction to Modern AI - Cisco Networking Academy</a></li>
+            <li><a href="Nvidia.png" target="_blank" class="cert-link">Generative AI Explained - NVIDIA</a></li>
         </ul>
 
     </div>
 
     <footer>
-        <p>Connect with me on <a href="https://www.linkedin.com/in/adham-elmessiry/" style="color: #3498db;">LinkedIn</a> </p>
-        <p>Email: adham_689@icloud.com </p>
+        <p>Connect with me on 
+            <a href="https://www.linkedin.com/in/adham-elmessiry/" style="color: #3498db;">LinkedIn</a> | 
+            <a href="https://github.com/adham-elmessiry" style="color: #3498db;">GitHub</a>
+        </p>
+        <p>Email: adham689@icloud.com</p>
     </footer>
+
+    <div id="lightbox" class="lightbox">
+        <img id="lightbox-img" src="">
+    </div>
+
+    <script>
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const images = document.querySelectorAll('img.portfolio-img'); // Only selects images, ignores video tags
+
+        // Open lightbox on image click
+        images.forEach(img => {
+            img.addEventListener('click', () => {
+                lightbox.style.display = 'flex';
+                lightboxImg.src = img.src;
+            });
+        });
+
+        // Close lightbox when clicking anywhere on it
+        lightbox.addEventListener('click', () => {
+            lightbox.style.display = 'none';
+        });
+    </script>
 
 </body>
 </html>
